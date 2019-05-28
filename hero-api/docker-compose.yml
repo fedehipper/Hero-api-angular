@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web-personas:
+    container_name: heros
+    build: .
+    ports: ["8080:8080"]
+    links:
+      - db
+    environment:
+      - server.port=8080
+      - spring.datasource.url=jdbc:postgresql://data-pg:5432/hero
+      - spring.datasource.username=postgres
+      - spring.datasource.password=postgres
+  db:
+    container_name: data-heros
+    image: postgres:latest
+    ports: ["5433:5432"]
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=hero
