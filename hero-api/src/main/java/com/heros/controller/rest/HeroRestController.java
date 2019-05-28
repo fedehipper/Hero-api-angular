@@ -10,21 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class HeroRestController {
-    
+
     @Autowired
     private HeroService heroService;
-    
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @GetMapping("/api/hero")
     public List<Hero> buscarTodos() {
         return this.heroService.getHeros();
     }
-    
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("api/hero/{id}") 
+
+    @GetMapping("api/hero/{id}")
     public Hero buscarHeroPorId(@PathVariable long id) {
         return this.heroService.buscarHeroPorId(id);
     }
-    
+
 }
