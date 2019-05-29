@@ -5,4 +5,4 @@ WORKDIR /workdir
 RUN mvn clean package
 
 WORKDIR /target
-ENTRYPOINT java -jar heros.jar
+ENTRYPOINT ["java","-jar","heros.jar"]
