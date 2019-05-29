@@ -3,6 +3,8 @@
 # Iniciar el compose:
 docker-compose up
 
+# Crear el schema hero mediante pgadmin
+
 # Crear la tabla y cargarle datos:
 
 INSERT INTO hero.hero(name) VALUES
