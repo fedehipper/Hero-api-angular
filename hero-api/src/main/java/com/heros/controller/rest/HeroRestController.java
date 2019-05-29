@@ -21,7 +21,7 @@ public class HeroRestController {
         return this.heroService.getHeros();
     }
 
-    @GetMapping("api/hero/{id}")
+    @GetMapping("/api/hero/{id}")
     public Hero buscarHeroPorId(@PathVariable long id) {
         return this.heroService.buscarHeroPorId(id);
     }

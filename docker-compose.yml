@@ -1,25 +1,29 @@
 version: '3'
 services:
-  web-personas:
-    container_name: heros
-    build: ./hero-api
-    ports: ["8080:8080"]
-    links:
-      - db
-    environment:
-      - server.port=8080
-      - spring.datasource.url=jdbc:postgresql://data-pg:5432/hero
-      - spring.datasource.username=postgres
-      - spring.datasource.password=postgres
-#  app:
-#    container_name: app-angular
-#    build: ./hero-front-end
-#    ports: ["4200:4200"]
   db:
     container_name: data-heros
     image: postgres:latest
-    ports: ["5433:5432"]
+    ports:
+    - "5433:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=hero
+
+  app:
+    container_name: heros
+    build: ./hero-api
+    working_dir: /hero-api
+    volumes:
+      - ./hero-api:/hero-api
+      - ~/.m2:/root/.m2
+    ports:
+    - "9090:8080"
+    command: mvn clean spring-boot:run
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/hero
+      - SPRING_DATASOURCE_USERNAMEe=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_SCHEMA=hero
