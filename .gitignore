@@ -1,5 +1,4 @@
-HELP.md
-/target/
+/hero-api/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -19,11 +18,8 @@ HELP.md
 
 ### NetBeans ###
 /nbproject/private/
+/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-/build/
-
-### VS Code ###
-.vscode/

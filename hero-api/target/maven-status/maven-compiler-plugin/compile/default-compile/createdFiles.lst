@@ -1,5 +1,0 @@
-com\heros\HerosApplication.class
-com\heros\controller\rest\HeroRestController.class
-com\heros\domain\Hero.class
-com\heros\repository\HeroRepository.class
-com\heros\service\HeroService.class
